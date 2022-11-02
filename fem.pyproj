@@ -1,0 +1,72 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003" DefaultTargets="Build">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{a9de9182-cc87-4f61-bc47-38907b36c61c}</ProjectGuid>
+    <ProjectHome />
+    <StartupFile>fem.py</StartupFile>
+    <SearchPath />
+    <WorkingDirectory>.</WorkingDirectory>
+    <OutputPath>.</OutputPath>
+    <ProjectTypeGuids>{888888a0-9f3d-457c-b088-3a5042f75d52}</ProjectTypeGuids>
+    <LaunchProvider>Standard Python launcher</LaunchProvider>
+    <InterpreterId />
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)' == 'Debug'" />
+  <PropertyGroup Condition="'$(Configuration)' == 'Release'" />
+  <PropertyGroup>
+    <VisualStudioVersion Condition=" '$(VisualStudioVersion)' == '' ">10.0</VisualStudioVersion>
+  </PropertyGroup>
+  <ItemGroup>
+    <Compile Include="base\point.py" />
+    <Compile Include="base\vector.py" />
+    <Compile Include="base\__init__.py" />
+    <Compile Include="base_functions\area.py" />
+    <Compile Include="base_functions\export_polygon.py" />
+    <Compile Include="base_functions\find_element.py" />
+    <Compile Include="base_functions\print.py" />
+    <Compile Include="base_functions\ray_tracing_method.py" />
+    <Compile Include="base_functions\submatrices.py" />
+    <Compile Include="base_functions\__init__.py" />
+    <Compile Include="classes\element.py" />
+    <Compile Include="classes\node.py" />
+    <Compile Include="classes\__init__.py" />
+    <Compile Include="example.py" />
+    <Compile Include="fem.py" />
+    <Compile Include="fem2d.py" />
+    <Compile Include="functions\complete_displacements.py" />
+    <Compile Include="functions\complete_forces.py" />
+    <Compile Include="functions\count_suppressed.py" />
+    <Compile Include="functions\find_displacement.py" />
+    <Compile Include="functions\free_force_vector.py" />
+    <Compile Include="functions\give_indexes.py" />
+    <Compile Include="functions\global_rigidity_matrix.py" />
+    <Compile Include="functions\nodal_displacement.py" />
+    <Compile Include="functions\nodal_forces.py" />
+    <Compile Include="functions\plane_stress_constitutive_matrix.py" />
+    <Compile Include="functions\rigidity_matrix.py" />
+    <Compile Include="functions\solve.py" />
+    <Compile Include="functions\strain_displacement_matrix.py" />
+    <Compile Include="functions\suppressed_displacement_vector.py" />
+    <Compile Include="functions\__init__.py" />
+    <Compile Include="graphical\draw_displacement.py" />
+    <Compile Include="graphical\draw_element.py" />
+    <Compile Include="graphical\draw_mesh.py" />
+    <Compile Include="graphical\__init__.py" />
+    <Compile Include="import_export\export_json.py" />
+    <Compile Include="import_export\import_gid.py" />
+    <Compile Include="import_export\import_json.py" />
+    <Compile Include="import_export\__init__.py" />
+    <Compile Include="solver.py" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="base" />
+    <Folder Include="base_functions" />
+    <Folder Include="classes" />
+    <Folder Include="functions" />
+    <Folder Include="graphical" />
+    <Folder Include="import_export" />
+  </ItemGroup>
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\Python Tools\Microsoft.PythonTools.targets" />
+</Project>

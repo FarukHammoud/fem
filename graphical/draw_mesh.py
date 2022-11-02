@@ -1,4 +1,4 @@
-import matplotlib as plt
+import matplotlib.pyplot as plt
 
 def _draw_mesh(elements = [], nodes = []):
   # Draws all elements

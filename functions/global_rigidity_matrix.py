@@ -11,18 +11,17 @@ def _global_rigidity_matrix(nodes, elements, thickness):
   _give_indexes(nodes)
   
   for element in elements:
-    if element.element_type == 'CST':
-      ke = _rigidity_matrix(element, nodes, thickness)
-      for i in range(len(element.nodes)):
-        for j in range(len(element.nodes)):
-          x_index_i = nodes[element.nodes[i]].x_index
-          x_index_j = nodes[element.nodes[j]].x_index
-          y_index_i = nodes[element.nodes[i]].y_index
-          y_index_j = nodes[element.nodes[j]].y_index
+    ke = _rigidity_matrix(element, nodes, thickness)
+    for i in range(len(element.nodes)):
+      for j in range(len(element.nodes)):
+        x_index_i = nodes[element.nodes[i]].x_index
+        x_index_j = nodes[element.nodes[j]].x_index
+        y_index_i = nodes[element.nodes[i]].y_index
+        y_index_j = nodes[element.nodes[j]].y_index
 
-          k[x_index_i][x_index_j] += ke[2*i][2*j]
-          k[x_index_i][y_index_j] += ke[2*i][2*j+1]
+        k[x_index_i][x_index_j] += ke[2*i][2*j]
+        k[x_index_i][y_index_j] += ke[2*i][2*j+1]
 
-          k[y_index_i][x_index_j] += ke[2*i+1][2*j]
-          k[y_index_i][y_index_j] += ke[2*i+1][2*j+1]
+        k[y_index_i][x_index_j] += ke[2*i+1][2*j]
+        k[y_index_i][y_index_j] += ke[2*i+1][2*j+1]
   return k

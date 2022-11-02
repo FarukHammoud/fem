@@ -1,48 +1,76 @@
+from argparse import SUPPRESS
 from matplotlib.font_manager import json_load
 import numpy as np
 from base import *
 from classes import *
 from fem2d import FEM2D
 
-from classes import Node
+RIGIDITY = 100000 #210000000000
+POISSON = 0.3
 
 model = FEM2D(nodes = [Node(position = Point(0,0)),
                        Node(position = Point(0,1)),
-                       Node(position = Point(1,0))],
-              elements = [Element(nodes = [0,1,2],
-                                  rigidity = 30000000000,
-                                  poisson = 0.1)])
+                       Node(position = Point(0,2)),
+                       Node(position = Point(2,0)),
+                       Node(position = Point(2,1)),
+                       Node(position = Point(2,2)),
+                       Node(position = Point(4,0)),
+                       Node(position = Point(4,1)),
+                       Node(position = Point(4,2))],
+              elements = [Element(nodes = [4,7,8,5],
+                                  rigidity = RIGIDITY,
+                                  poisson = POISSON, 
+                                  density = 0,
+                                  element_type='QUAD'),
+                                  Element(nodes = [1,4,5,2],
+                                  rigidity = RIGIDITY,
+                                  poisson = POISSON,
+                                  density = 0,
+                                  element_type='QUAD'),
+                                  Element(nodes = [3,6,7,4],
+                                  rigidity = RIGIDITY,
+                                  poisson = POISSON, 
+                                  density = 0,
+                                  element_type='QUAD'),
+                                  Element(nodes = [0,3,4,1],
+                                  rigidity = RIGIDITY,
+                                  poisson = POISSON, 
+                                  density = 0,
+                                  element_type='QUAD')], 
+              thickness=0.01)
 
-# Exporting model to JSON String
-json_ = model.export_json()
-print(json_)
+FREE = None
+SUPPRESSED = 0
 
-# Importing model from JSON String
-model_copy = FEM2D()
-model_copy.import_json(json_)
-print(model_copy.elements[0].export())
+model.nodes[0].displacement = Vector(SUPPRESSED,SUPPRESSED)
+model.nodes[0].force = Vector(FREE, FREE)
 
-"""## Importar geometria do GiD"""
+model.nodes[1].displacement = Vector(SUPPRESSED,SUPPRESSED)
+model.nodes[1].force = Vector(FREE, FREE)
 
-#from google.colab import files
+model.nodes[2].displacement = Vector(SUPPRESSED,SUPPRESSED)
+model.nodes[2].force = Vector(0, -40)
 
-#print("Upload nodes file from GiD:")
-#nodes_file = list(files.upload().keys())[0] 
+model.nodes[3].displacement = Vector(FREE,FREE)
+model.nodes[3].force = Vector(0, 0)
 
-#print("Upload elements file from GiD:")
-#elements_file = list(files.upload().keys())[0]
+model.nodes[4].displacement = Vector(FREE,FREE)
+model.nodes[4].force = Vector(0, 0)
 
-#model = FEM2D(thickness=0.25)
-#model.import_gid(nodes_file, elements_file, default_force = Vector(0,-1*10**6), default_displacement = Vector(None, None))
-#model.draw_mesh() # it works sometimes
+model.nodes[5].displacement = Vector(FREE,FREE)
+model.nodes[5].force = Vector(0, -80)
 
-#model.nodes[2].export()
+model.nodes[6].displacement = Vector(FREE,FREE)
+model.nodes[6].force = Vector(0, 0)
 
-model.nodes[0].displacement = Vector(0,0)
-model.nodes[0].force = Vector(None, None)
+model.nodes[7].displacement = Vector(FREE,FREE)
+model.nodes[7].force = Vector(0, 0)
 
-model.nodes[1].displacement = Vector(0,0)
-model.nodes[1].force = Vector(None, None)
+model.nodes[8].displacement = Vector(FREE,FREE)
+model.nodes[8].force = Vector(0, -40)
+
+
+model.draw_mesh()
 
 model.solve()
 

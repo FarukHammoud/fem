@@ -163,3 +163,5 @@ def local_solver(Coord, t, Em, v, p, P, b, tn):
         print("Stress S22 at Integration Points =:", StressS22)
         print("Stress S12 at Integration Points =:", StressS12)
         print("")
+    
+    return Kfull

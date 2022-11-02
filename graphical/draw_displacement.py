@@ -1,3 +1,4 @@
+import tkinter
 from matplotlib import pyplot as plt
 
 def _draw_displacement(elements = [], nodes = [], factor = 1):
