@@ -5,13 +5,14 @@
     <SchemaVersion>2.0</SchemaVersion>
     <ProjectGuid>{a9de9182-cc87-4f61-bc47-38907b36c61c}</ProjectGuid>
     <ProjectHome />
-    <StartupFile>fem.py</StartupFile>
+    <StartupFile>example_cst.py</StartupFile>
     <SearchPath />
     <WorkingDirectory>.</WorkingDirectory>
     <OutputPath>.</OutputPath>
     <ProjectTypeGuids>{888888a0-9f3d-457c-b088-3a5042f75d52}</ProjectTypeGuids>
     <LaunchProvider>Standard Python launcher</LaunchProvider>
     <InterpreterId />
+    <IsWindowsApplication>False</IsWindowsApplication>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)' == 'Debug'" />
   <PropertyGroup Condition="'$(Configuration)' == 'Release'" />
@@ -32,8 +33,9 @@
     <Compile Include="classes\element.py" />
     <Compile Include="classes\node.py" />
     <Compile Include="classes\__init__.py" />
-    <Compile Include="example.py" />
-    <Compile Include="fem.py" />
+    <Compile Include="example_cst.py" />
+    <Compile Include="example_quad_local.py" />
+    <Compile Include="example_quad.py" />
     <Compile Include="fem2d.py" />
     <Compile Include="functions\complete_displacements.py" />
     <Compile Include="functions\complete_forces.py" />
@@ -54,11 +56,13 @@
     <Compile Include="graphical\draw_element.py" />
     <Compile Include="graphical\draw_mesh.py" />
     <Compile Include="graphical\__init__.py" />
+    <Compile Include="import_export\export_mesh.py" />
     <Compile Include="import_export\export_json.py" />
     <Compile Include="import_export\import_gid.py" />
     <Compile Include="import_export\import_json.py" />
     <Compile Include="import_export\__init__.py" />
-    <Compile Include="solver.py" />
+    <Compile Include="solver_cst.py" />
+    <Compile Include="solver_quad.py" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="base" />

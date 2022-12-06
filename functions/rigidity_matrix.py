@@ -1,7 +1,8 @@
 from .strain_displacement_matrix import _strain_displacement_matrix
 from .plane_stress_constitutive_matrix import _plane_stress_constitutive_matrix
 from base_functions import _area
-from solver import local_solver
+from solver_quad import local_solver
+from solver_cst import local_solver as cst_solver
 import numpy as np
 
 def _rigidity_matrix(element, nodes, thickness):

@@ -1,7 +1,7 @@
 from base import *
 from base_functions import _area, _submatrices, _find_element
 from graphical import _draw_mesh, _draw_displacement, _draw_element
-from import_export import _export_json, _import_gid, _import_json
+from import_export import _export_json, _import_gid, _import_json, _export_mesh
 from functions import _nodal_forces, _nodal_displacements, _strain_displacement_matrix, _plane_stress_constitutive_matrix, _rigidity_matrix, _count_suppressed, _give_indexes, _global_rigidity_matrix, _suppressed_displacement_vector, _free_force_vector, _complete_displacements, _complete_forces, _solve, _find_displacement
 #import functions
 
@@ -20,6 +20,9 @@ class FEM2D:
 
   def export_json(self):
     return _export_json(self.nodes, self.elements, self.thickness)
+    
+  def export_mesh(self):
+    return _export_mesh(self.nodes, self.elements)
 
   def draw_mesh(self):
     _draw_mesh(self.elements, self.nodes)

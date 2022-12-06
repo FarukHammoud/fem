@@ -37,7 +37,6 @@ def local_solver(Coord, t, Em, v, p, P, b, tn):
     # B Matrix 
     B1 = np.array([[1, 0, 0, 0], [0, 0, 0, 1], [0, 1, 1, 0]]);
     B2 = lambda xi, eta: [[Jinv(xi,eta)[0][0],Jinv(xi,eta)[0][1], 0, 0], [Jinv(xi,eta)[1][0], Jinv(xi,eta)[1][1],0, 0], [0, 0, Jinv(xi,eta)[0][0], Jinv(xi,eta)[0][1]], [0, 0, Jinv(xi,eta)[1][0], Jinv(xi,eta)[1][1]]]
-    B3_ = np.zeros((4,8)).tolist();
 
     D_Ni_xi = lambda eta: [(1/4)*(-1 + eta), (1 - eta)/4, (1 + eta)/4, (1/4)*(-1 - eta)]
     D_Ni_eta = lambda xi: [(1/4)*(-1 + xi), (1/4)*(-1 - xi), (1 + xi)/4, (1 - xi)/4]
@@ -62,8 +61,8 @@ def local_solver(Coord, t, Em, v, p, P, b, tn):
     xiset = [1/np.sqrt(3), -1/np.sqrt(3)]
     etaset = [1/np.sqrt(3), -1/np.sqrt(3)]
     Kfull = 0
-    for i in range(2):
-        for j in range(2):
+    for i in range(len(xiset)):
+        for j in range(len(etaset)):
             Kfull += t*IntFunc(xiset[i], etaset[j])
 
     ## Step 2 - Nodal Forces Vector 
